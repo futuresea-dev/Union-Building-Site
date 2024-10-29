@@ -1,0 +1,105 @@
+<!-- modify -->
+
+<!DOCTYPE html>
+<html lang="en" style="background: #555;">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style media="screen,print">
+        .up {
+            transform: rotate(-180deg);
+            -webkit-transform: rotate(-180deg);
+        }
+
+        img {
+            width: 100%;
+            height: 500px;
+        }
+
+        .tempswitch {
+            clear: both;
+            overflow: hidden;
+            padding: 17px 2px !important;
+            font-weight: 400;
+        }
+
+        .box img {
+            height: 200px;
+            width: 100%;
+            border: none;
+            overflow: hidden;
+        }
+
+        .page-break {
+            page-break-inside: avoid ! important;
+            page-break-before: avoid !important;
+            page-break-after: avoid !important;
+            position: relative;
+        }
+    </style>
+</head>
+
+<body
+    style="position: relative;max-width:900px; margin:0 auto; padding:0; background:#fff; color:#000; font-size: 16px; line-height: 22px; font-family: 'Roboto Condensed', sans-serif;">
+    <div style="padding:25px;">
+        <div id="bd-main-area"
+            style="border-collapse:collapse;position: relative;display: block; background-color: #f4f5f5; padding: 25px;">
+            <div class="title-area" style="padding-bottom: 10px; border-bottom: 14px solid #2c3336;">
+
+                <h2 class="maintitle "
+                    style="margin-top: 15px; margin-bottom: 0; font-size: 42px; font-style: italic; font-weight: 700; color: #2c3336;">
+                    <%= data.series_buildlist_title %>
+                </h2>
+
+            </div>
+
+            <div class="box"
+                style="padding: 20px;margin-top:10px; background-color: #fff; border-left: 22px solid #a1cb3a; margin-bottom: 5px;height:auto;">
+                <div class="box-title" style="color: #2c3336; font-size: 18px; font-weight: 700;">
+                    Series Image
+                </div>
+                <div class="text-center" style="text-align: center;">
+
+                    <% if(data.media_url !="" && data.media_url !=null){ %>
+                        <img src="<%= data.media_url %>" alt="tree" />
+                        <% }else{ %>
+                            <div style="text-align: center;font-weight: 700;">No image found! </div>
+                            <% } %>
+                </div>
+            </div>
+
+            <div class="box"
+                style="box-decoration-break: slice;padding: 20px;margin-top:10px;background-color: #fff; border-left: 22px solid black; margin-bottom: 5px;">
+                <div class="" style="width:100%;">
+                    <div class="box-title"
+                        style=" color: #2c3336; font-size: 18px; font-weight: 700; display: inline-block;">
+                        Series Description
+                    </div>
+                </div>
+                <%- data.series_buildlist_content %>
+            </div>
+
+            <% for(var x=0; x < data.sycu_build_elements_details.length; x++) { %>
+
+                <div class="box"
+                    style="box-decoration-break: slice;padding: 20px;margin-top:10px;background-color: #fff; border-left: 22px solid rgb(235,235,235); margin-bottom: 5px;">
+                    <div class="" style="width:100%;">
+                        <div class="box-title "
+                            style="color: #2c3336; font-size: 18px; font-weight: 700; display: inline-block;">
+                            <%= data.sycu_build_elements_details[x].title %>
+                        </div>
+                    </div>
+                    <p>
+                        <%- data.sycu_build_elements_details[x].content %>
+                    </p>
+                </div>
+
+                <% } %>
+
+        </div>
+    </div>
+</body>
+
+</html>

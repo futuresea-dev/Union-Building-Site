@@ -1,0 +1,881 @@
+{
+    "openapi": "3.0.1",
+    "info": {
+        "title": "SYCU Admin Support Tickets",
+        "description": "",
+        "termsOfService": "",
+        "contact": {
+            "email": ""
+        },
+        "license": {
+            "name": "",
+            "url": ""
+        },
+        "version": "1.0.0"
+    },
+    "host": "localhost:8081",
+    "externalDocs": {
+        "description": "",
+        "url": ""
+    },
+    "servers": [
+        {
+            "url": "https://api.admin.stuffyoucanuse.dev/api/v1/"
+        },
+        {
+            "url": "https://api.admin.stuffyoucanuse.org/api/v1/"
+        }
+    ],
+    "tags": [
+        {
+            "name": "TEST",
+            "description": "APIS in progress"
+        },
+        {
+            "name": "Support Ticket",
+            "description": "APIS for CRUD Support Tickets"
+        },
+        {
+            "name": "Support Ticket 1",
+            "description": "APIS for getting lists of additional informations"
+        }
+    ],
+    "paths": {
+        "/test": {
+            "post": {
+                "tags": [
+                    "test"
+                ],
+                "summary": "",
+                "requestBody": {
+                    "description": "",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/test"
+                            }
+                        }
+                    }
+                },
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/components/schemas/SuccessResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "Failed. Bad post data.",
+                        "schema": {
+                            "$ref": "#/components/schemas/ErrorResponse"
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "Authorization": []
+                    }
+                ]
+            }
+        },
+        "/listSupportTickets": {
+            "post": {
+                "tags": [
+                    "Support Ticket"
+                ],
+                "summary": "List support tickets",
+                "requestBody": {
+                    "description": "",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/listSupportTickets"
+                            }
+                        }
+                    }
+                },
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/components/schemas/SuccessResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/components/schemas/ErrorResponse"
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "Authorization": []
+                    }
+                ]
+            }
+        },
+        "/listAssignedOpenSupportTickets": {
+            "post": {
+                "tags": [
+                    "Support Ticket"
+                ],
+                "summary": "List assigned & open support tickets by user_id from token",
+                "requestBody": {
+                    "description": "",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/listAssignedOpenSupportTickets"
+                            }
+                        }
+                    }
+                },
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/components/schemas/SuccessResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/components/schemas/ErrorResponse"
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "Authorization": []
+                    }
+                ]
+            }
+        },
+        "/listAssignedClosedSupportTickets": {
+            "post": {
+                "tags": [
+                    "Support Ticket"
+                ],
+                "summary": "List assigned & closed support tickets by user_id from token",
+                "requestBody": {
+                    "description": "",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/listAssignedClosedSupportTickets"
+                            }
+                        }
+                    }
+                },
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/components/schemas/SuccessResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/components/schemas/ErrorResponse"
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "Authorization": []
+                    }
+                ]
+            }
+        },
+        "/listUnassignedSupportTickets": {
+            "post": {
+                "tags": [
+                    "Support Ticket"
+                ],
+                "summary": "List unassigned support tickets",
+                "requestBody": {
+                    "description": "",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/listUnassignedSupportTickets"
+                            }
+                        }
+                    }
+                },
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/components/schemas/SuccessResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/components/schemas/ErrorResponse"
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "Authorization": []
+                    }
+                ]
+            }
+        },
+        "/getSupportTicket": {
+            "post": {
+                "tags": [
+                    "Support Ticket"
+                ],
+                "summary": "Get a support ticket by id",
+                "requestBody": {
+                    "description": "",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/getSupportTicket"
+                            }
+                        }
+                    }
+                },
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/components/schemas/SuccessResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/components/schemas/ErrorResponse"
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "Authorization": []
+                    }
+                ]
+            }
+        },
+        "/createSupportTicket": {
+            "post": {
+                "tags": [
+                    "TEST"
+                ],
+                "summary": "Create a support ticket",
+                "requestBody": {
+                    "description": "",
+                    "required": false,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/createSupportTicket"
+                            }
+                        }
+                    }
+                },
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/components/schemas/SuccessResponse"
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "Authorization": []
+                    }
+                ]
+            }
+        },
+        "/updateSupportTicket": {
+            "post": {
+                "tags": [
+                    "TEST"
+                ],
+                "summary": "Update a support ticket with Id",
+                "requestBody": {
+                    "description": "",
+                    "required": false,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/createSupportTicket"
+                            }
+                        }
+                    }
+                },
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/components/schemas/SuccessResponse"
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "Authorization": []
+                    }
+                ]
+            }
+        },
+        "/deleteSupportTicket": {
+            "post": {
+                "tags": [
+                    "TEST"
+                ],
+                "summary": "Delete a support ticket by Id",
+                "requestBody": {
+                    "description": "",
+                    "required": false,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/deleteSupportTicket"
+                            }
+                        }
+                    }
+                },
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/components/schemas/SuccessResponse"
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "Authorization": []
+                    }
+                ]
+            }
+        },
+        "/listSupportTicketNotes": {
+            "post": {
+                "tags": [
+                    "Support Ticket"
+                ],
+                "summary": "List support ticket notes by support ticket ID",
+                "requestBody": {
+                    "description": "",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/listSupportTicketNotes"
+                            }
+                        }
+                    }
+                },
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/components/schemas/SuccessResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/components/schemas/ErrorResponse"
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "Authorization": []
+                    }
+                ]
+            }
+        },
+        "/listSupportTicketActivities": {
+            "post": {
+                "tags": [
+                    "Support Ticket"
+                ],
+                "summary": "List support ticket notes by support ticket ID",
+                "requestBody": {
+                    "description": "",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/listSupportTicketActivities"
+                            }
+                        }
+                    }
+                },
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/components/schemas/SuccessResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/components/schemas/ErrorResponse"
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "Authorization": []
+                    }
+                ]
+            }
+        },
+        "/listSupportTicketTypes": {
+            "get": {
+                "tags": [
+                    "Support Ticket 1"
+                ],
+                "summary": "List support ticket types",
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/components/schemas/SuccessResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "Failed. Bad post data."
+                    }
+                },
+                "security": [
+                    {
+                        "Authorization": []
+                    }
+                ]
+            }
+        },
+        "/listSupportTicketServices": {
+            "get": {
+                "tags": [
+                    "Support Ticket 1"
+                ],
+                "summary": "List support ticket services",
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/components/schemas/SuccessResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "Failed. Bad post data."
+                    }
+                },
+                "security": [
+                    {
+                        "Authorization": []
+                    }
+                ]
+            }
+        },
+        "/listSupportTicketStatus": {
+            "get": {
+                "tags": [
+                    "Support Ticket 1"
+                ],
+                "summary": "List support ticket status",
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/components/schemas/SuccessResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "Failed. Bad post data."
+                    }
+                },
+                "security": [
+                    {
+                        "Authorization": []
+                    }
+                ]
+            }
+        },
+        "/listSupportTicketApplications": {
+            "get": {
+                "tags": [
+                    "Support Ticket 1"
+                ],
+                "summary": "List support ticket applications",
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/components/schemas/SuccessResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "Failed. Bad post data."
+                    }
+                },
+                "security": [
+                    {
+                        "Authorization": []
+                    }
+                ]
+            }
+        },
+        "/createSupportTicketNote": {
+            "post": {
+                "tags": [
+                    "Support Ticket"
+                ],
+                "summary": "Create a support ticket note",
+                "requestBody": {
+                    "description": "",
+                    "required": false,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/createSupportTicketNote"
+                            }
+                        }
+                    }
+                },
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/components/schemas/SuccessResponse"
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "Authorization": []
+                    }
+                ]
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "test": {
+                "type": "object",
+                "properties": {
+                    "email_design_template_id": {
+                        "type": "integer"
+                    },
+                    "subject": {
+                        "type": "string"
+                    },
+                    "template_html_text": {
+                        "type": "string"
+                    },
+                    "reply_on_email_address": {
+                        "type": "string"
+                    },
+                    "is_status": {
+                        "type": "integer"
+                    },
+                    "is_for": {
+                        "type": "integer"
+                    }
+                }
+            },
+            "createSupportTicket": {
+                "type": "object",
+                "required": [
+                    "subject",
+                    "users_id"
+                ],
+                "properties": {
+                    "subject": {
+                        "type": "string"
+                    },
+                    "description": {
+                        "type": "string"
+                    },
+                    "applications_id": {
+                        "type": "integer"
+                    },
+                    "support_tickets_statuses_id": {
+                        "type": "integer"
+                    },
+                    "support_tickets_types_id": {
+                        "type": "integer"
+                    },
+                    "users_id": {
+                        "type": "integer"
+                    }
+                }
+            },
+            "createSupportTicketNote": {
+                "type": "object",
+                "required": [
+                    "id",
+                    "note"
+                ],
+                "properties": {
+                    "id": {
+                        "type": "integer"
+                    },
+                    "note": {
+                        "type": "string"
+                    }
+                }
+            },
+            "updateSupportTicket": {
+                "type": "object",
+                "required": [
+                    "subject",
+                    "users_id"
+                ],
+                "properties": {
+                    "subject": {
+                        "type": "string"
+                    },
+                    "description": {
+                        "type": "string"
+                    },
+                    "applications_id": {
+                        "type": "integer"
+                    },
+                    "support_tickets_statuses_id": {
+                        "type": "integer"
+                    },
+                    "support_tickets_types_id": {
+                        "type": "integer"
+                    },
+                    "users_id": {
+                        "type": "integer"
+                    }
+                }
+            },
+            "deleteSupportTicket": {
+                "type": "object",
+                "required": [
+                    "id"
+                ],
+                "properties": {
+                    "id": {
+                        "type": "integer"
+                    }
+                }
+            },
+            "listSupportTickets": {
+                "type": "object",
+                "properties": {
+                    "search": {
+                        "type": "string",
+                        "default": ""
+                    },
+                    "page_no": {
+                        "type": "integer"
+                    },
+                    "page_record": {
+                        "type": "integer"
+                    },
+                    "sort_field": {
+                        "type": "string",
+                        "default": ""
+                    },
+                    "sort_order": {
+                        "type": "string",
+                        "default": ""
+                    },
+                    "type": {
+                        "type": "integer"
+                    },
+                    "status": {
+                        "type": "integer"
+                    }
+                }
+            },
+            "listAssignedOpenSupportTickets": {
+                "type": "object",
+                "properties": {
+                    "page_no": {
+                        "type": "integer"
+                    },
+                    "page_record": {
+                        "type": "integer"
+                    }
+                }
+            },
+            "listAssignedClosedSupportTickets": {
+                "type": "object",
+                "properties": {
+                    "page_no": {
+                        "type": "integer"
+                    },
+                    "page_record": {
+                        "type": "integer"
+                    }
+                }
+            },
+            "listUnassignedSupportTickets": {
+                "type": "object",
+                "properties": {
+                    "page_no": {
+                        "type": "integer"
+                    },
+                    "page_record": {
+                        "type": "integer"
+                    }
+                }
+            },
+            "getSupportTicket": {
+                "type": "object",
+                "required": [
+                    "id"
+                ],
+                "properties": {
+                    "id": {
+                        "type": "integer"
+                    }
+                }
+            },
+            "listSupportTicketNotes": {
+                "type": "object",
+                "required": [
+                    "id"
+                ],
+                "properties": {
+                    "id": {
+                        "type": "integer"
+                    },
+                    "page_no": {
+                        "type": "integer"
+                    },
+                    "page_record": {
+                        "type": "integer"
+                    }
+                }
+            },
+            "listSupportTicketActivities": {
+                "type": "object",
+                "required": [
+                    "id"
+                ],
+                "properties": {
+                    "id": {
+                        "type": "integer"
+                    },
+                    "page_no": {
+                        "type": "integer"
+                    },
+                    "page_record": {
+                        "type": "integer"
+                    }
+                }
+            },
+            "SuccessResponse": {
+                "type": "object",
+                "properties": {
+                    "code": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "message": {
+                        "type": "string"
+                    },
+                    "data": {
+                        "type": "object",
+                        "properties": {
+                            "token": {
+                                "type": "string"
+                            },
+                            "data": {
+                                "type": "object"
+                            }
+                        }
+                    }
+                }
+            },
+            "ErrorResponse": {
+                "type": "object",
+                "properties": {
+                    "code": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "message": {
+                        "type": "string"
+                    },
+                    "status": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        "securitySchemes": {
+            "Authorization": {
+                "type": "http",
+                "scheme": "bearer",
+                "name": "Authorization",
+                "in": "header"
+            }
+        }
+    }
+}
